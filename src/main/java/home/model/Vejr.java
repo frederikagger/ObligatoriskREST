@@ -1,11 +1,13 @@
 
 package home.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Vejr implements Serializable
 {
 

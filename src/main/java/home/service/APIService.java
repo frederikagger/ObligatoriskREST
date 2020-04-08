@@ -14,7 +14,7 @@ public class APIService {
     private RestTemplate restTemplate;
     private final String api_url;
 
-    public APIService(RestTemplate restTemplate, @Value("${api.url") String api_url) {
+    public APIService(RestTemplate restTemplate, @Value("${api.url}") String api_url) {
         this.restTemplate = restTemplate;
         this.api_url = api_url;
     }

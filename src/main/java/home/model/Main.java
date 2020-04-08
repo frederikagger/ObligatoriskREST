@@ -1,17 +1,19 @@
 
 package home.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Main implements Serializable
 {
 
     private Float temp;
-    private Float feelsLike;
-    private Float tempMin;
-    private Float tempMax;
+    private Float feels_like;
+    private Float temp_min;
+    private Float temp_max;
     private Integer pressure;
     private Integer humidity;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -25,28 +27,28 @@ public class Main implements Serializable
         this.temp = temp;
     }
 
-    public Float getFeelsLike() {
-        return feelsLike;
+    public Float getFeels_like() {
+        return feels_like;
     }
 
-    public void setFeelsLike(Float feelsLike) {
-        this.feelsLike = feelsLike;
+    public void setFeels_like(Float feels_like) {
+        this.feels_like = feels_like;
     }
 
-    public Float getTempMin() {
-        return tempMin;
+    public Float getTemp_min() {
+        return temp_min;
     }
 
-    public void setTempMin(Float tempMin) {
-        this.tempMin = tempMin;
+    public void setTemp_min(Float temp_min) {
+        this.temp_min = temp_min;
     }
 
-    public Float getTempMax() {
-        return tempMax;
+    public Float getTemp_max() {
+        return temp_max;
     }
 
-    public void setTempMax(Float tempMax) {
-        this.tempMax = tempMax;
+    public void setTemp_max(Float temp_max) {
+        this.temp_max = temp_max;
     }
 
     public Integer getPressure() {

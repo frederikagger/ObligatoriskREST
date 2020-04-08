@@ -1,0 +1,16 @@
+html{
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: white;
+}
+
+body{
+    background-color:lightgray;
+    text-align:center;
+}
+
+.table-bordered{
+    width: 40%;
+    background-color: white;
+    margin:auto;
+}

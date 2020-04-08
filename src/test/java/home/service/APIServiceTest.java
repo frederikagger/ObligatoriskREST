@@ -8,11 +8,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.logging.log4j2.Log4J2LoggingSystem;
-import org.springframework.boot.test.autoconfigure.core.AutoConfigureCache;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
+
 import java.lang.String;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,6 +35,7 @@ class APIServiceTest {
         assertNotNull(vejr.getMain().getTemp());
         String by = vejr.getName();
         assertEquals(by, "Copenhagen");
+        assertNotNull(vejr.getMain().getFeels_like());
 
     }
 }
