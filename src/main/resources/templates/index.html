@@ -6,33 +6,42 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" th:href="styles.css">
+    <script th:src="functions.js"></script>
 
 </head>
-<body>
+<body onload="setUNIXTime()">
 <h1>Weather in <span th:text="${vejr?.name}"> By </span></h1>
+
+<img th:src="@{'http://openweathermap.org/img/wn/' + ${vejr?.weather[0].icon}}+'@2x.png'">
+<h1> <span th:text="${vejr?.main?.temp}"> Temperature </span> °C </h1>
 
 <table class="table table-bordered">
     <thead>
     <tr>
         <td scope="col">Wind</td>
-        <td> <span th:text="${vejr?.wind?.speed}"> </span> m/s </td>
+        <td><span th:text="${vejr?.wind?.speed}"> </span> m/s</td>
     </tr>
     <tr>
         <td scope="col">Cloudiness</td>
-        <td> <span th:text="${vejr?.weather[0]?.description}"> </span> </td>
+        <td><span th:text="${vejr?.weather[0]?.description}"> </span></td>
     </tr>
     <tr>
         <td scope="col">Pressure</td>
-        <td> <span th:text="${vejr?.main?.pressure}"> </span> hPa </td>
+        <td><span th:text="${vejr?.main?.pressure}"> </span> hPa</td>
     </tr>
     <tr>
         <td scope="col">Humidity</td>
-        <td> <span th:text="${vejr?.main?.humidity}"> </span> % </td>
+        <td><span th:text="${vejr?.main?.humidity}"> </span> %</td>
+    </tr>
+    <tr>
+        <td scope="col">Sunrise</td>
+        <td> <span th:text="${vejr?.sys?.sunrise}" class="time"> </span> </td>
+    </tr>
+    <tr>
+        <td scope="col">Sunset</td>
+        <td><span th:text="${vejr?.sys?.sunset}" class="time"> </span> </td>
     </tr>
     </thead>
 </table>
-<p> <span th:text="${vejr?.main?.temp}"> Temperatur </span> C </p>
-<p> <span th:text="${vejr?.main?.feels_like}"> Feels like temperature </span> C </p>
-
 </body>
 </html>
