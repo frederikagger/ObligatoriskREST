@@ -2,6 +2,7 @@ package home.service;
 
 import home.model.Main;
 import home.model.Vejr;
+import home.model.Weather;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class APIServiceTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(APIServiceTest.class);
     @Autowired
     APIService apiService;
 
@@ -36,6 +36,14 @@ class APIServiceTest {
         String by = vejr.getName();
         assertEquals(by, "Copenhagen");
         assertNotNull(vejr.getMain().getFeels_like());
+    }
 
+    @Test
+    void getVejrByID(){
+        Vejr vejr = apiService.getVejrByID((long) 1);
+        assertNotNull(vejr);
+        assertEquals(32, vejr.getClouds().getAll());
+        Weather weather = apiService.getWeatherByID((long) 1);
+        assertEquals("03d", weather.getIcon());
     }
 }
