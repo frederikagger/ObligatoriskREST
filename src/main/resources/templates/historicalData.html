@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather app</title>
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{http://localhost:8181/styles.css}">
+
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h1> Weather application </h1>
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+    <a th:href="@{/}"> Home </a>
+    <a th:href="@{/historicalData}">Historical data</a>
+</div>
+
+<!-- Content  -->
+<div class="content">
+    <!-- Table -->
+    <div class="table">
+        <table class="table table-striped">
+            <thead>
+            <tr th:each="vejr :${altvejr}">
+                <td th:text="${vejr?.datetimeCreated}"></td>
+                <td th:text="${vejr?.name}"></td>
+                <td>
+                    <a th:href="@{'/historicalData/' + ${vejr?.ID}}" type="button" class="btn btn-dark"> See details </a>
+                </td>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+</body>
+</html>

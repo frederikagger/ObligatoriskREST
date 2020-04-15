@@ -32,7 +32,7 @@
 <!-- Content  -->
 <div class="content">
     <h3>Weather in <span th:text="${vejr?.name} +', '+${vejr?.sys?.country} + ' at '+${vejr?.datetimeCreated}"> By, Land </span></h3>
-    <img alt="weather icon" th:src="@{'http://openweathermap.org/img/wn/' + ${vejr?.weather[0].icon}}+'@2x.png'">
+    <img alt="weather icon" th:src="@{'http://openweathermap.org/img/wn/' + ${weather?.icon}}+'@2x.png'">
     <h3><span th:text="${vejr?.main?.temp}"> Temperature </span> °C </h3>
 
     <!-- Table -->
@@ -45,7 +45,7 @@
             </tr>
             <tr>
                 <td scope="col">Cloudiness</td>
-                <td><span th:text="${vejr?.weather[0].description}"> </span></td>
+                <td><span th:text="${weather?.description}"> </span></td>
             </tr>
             <tr>
                 <td scope="col">Pressure</td>
