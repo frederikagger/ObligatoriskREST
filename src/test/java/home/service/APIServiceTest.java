@@ -29,7 +29,7 @@ class APIServiceTest {
 
     @Test
     void getVejr() {
-        Vejr vejr = apiService.getVejr();
+        Vejr vejr = apiService.getVejr("Copenhagen");
         assertNotNull(vejr);
         assertEquals(vejr.getMain().getClass(), Main.class);
         assertNotNull(vejr.getMain().getTemp());
