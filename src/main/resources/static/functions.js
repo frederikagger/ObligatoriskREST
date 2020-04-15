@@ -6,7 +6,7 @@ function convertUNIXtime(time){
 }
 
 function convertUNIXTime(unixTimestamp) {
-    let dateObj = new Date((parseInt(unixTimestamp)+7200) * 1000);
+    let dateObj = new Date((parseInt(unixTimestamp)) * 1000);
 // Get hours from the timestamp
     let hours = dateObj.getUTCHours();
 // Get minutes part from the timestamp
@@ -14,7 +14,6 @@ function convertUNIXTime(unixTimestamp) {
 // Get seconds part from the timestamp
     let formattedTime = hours.toString().padStart(2, '0') + ':' +
         minutes.toString().padStart(2, '0');
-    console.log(formattedTime);
     return formattedTime;
 }
 
