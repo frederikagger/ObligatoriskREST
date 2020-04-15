@@ -13,7 +13,7 @@ public class Vejr extends BaseEntity
 {
     @OneToOne(cascade = CascadeType.ALL)
     private Coord coord;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vejr")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vejr", fetch = FetchType.EAGER)
     private List<Weather> weather = null;
     private String base;
     @OneToOne(cascade = CascadeType.ALL)
