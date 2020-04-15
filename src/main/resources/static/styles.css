@@ -1,16 +1,52 @@
-html{
-    padding-left: 10%;
-    padding-right: 10%;
-    background-color: white;
-}
-
 body{
-    background-color:lightgray;
+    background-color:#0c0613;
     text-align:center;
+    color: white;
+    margin-left: 100px;
+
 }
 
-.table-bordered{
+.header{
+    padding: 80px;
+    color: white;
+    font-family: "Comic Sans MS";
+    background-color:darkblue
+}
+
+.navbar{
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+}
+
+.navbar a{
+    padding: 5px 5px 5px 5px;
+    color: white;
+}
+
+.navbar a:hover{
+    background-color: #ddd;
+    color: black;
+}
+.table-striped{
     width: 40%;
     background-color: white;
     margin:auto;
+}
+
+.searchBar{
+    padding: 50px 30px 30px 30px;
+}
+
+.searchBar input{
+    width: 20%;
+}
+
+.content{
+    padding: 80px;
 }
