@@ -1,31 +1,41 @@
-
 package home.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Vejr implements Serializable
-{
 
+@Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Vejr extends BaseEntity
+{
+    @OneToOne(cascade = CascadeType.ALL)
     private Coord coord;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vejr")
     private List<Weather> weather = null;
     private String base;
+    @OneToOne(cascade = CascadeType.ALL)
     private Main main;
     private Integer visibility;
+    @OneToOne(cascade = CascadeType.ALL)
     private Wind wind;
+    @OneToOne(cascade = CascadeType.ALL)
     private Clouds clouds;
     private Integer dt;
+    @OneToOne(cascade = CascadeType.ALL)
     private Sys sys;
     private Integer timezone;
+    @Column(name = "location_id")
     private Integer id;
     private String name;
     private Integer cod;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     private final static long serialVersionUID = 4029414871316307027L;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "datetime_created")
+    private Date datetimeCreated;
 
     public Coord getCoord() {
         return coord;
@@ -131,12 +141,11 @@ public class Vejr implements Serializable
         this.cod = cod;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    public Date getDatetimeCreated() {
+        return datetimeCreated;
     }
 
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public void setDatetimeCreated(Date dateCreated) {
+        this.datetimeCreated = dateCreated;
     }
-
 }

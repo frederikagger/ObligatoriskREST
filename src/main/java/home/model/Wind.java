@@ -1,18 +1,20 @@
-
 package home.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Wind implements Serializable
+public class Wind extends BaseEntity
 {
 
+    @OneToOne(mappedBy = "wind")
+    private Vejr vejr;
     private Float speed;
     private Integer deg;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     private final static long serialVersionUID = 4773578386944280830L;
 
     public Float getSpeed() {
@@ -31,12 +33,12 @@ public class Wind implements Serializable
         this.deg = deg;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+
+    public Vejr getVejr() {
+        return vejr;
     }
 
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public void setVejr(Vejr vejr) {
+        this.vejr = vejr;
     }
-
 }

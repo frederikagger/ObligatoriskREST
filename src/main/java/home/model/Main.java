@@ -1,22 +1,24 @@
-
 package home.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Main implements Serializable
+public class Main extends BaseEntity
 {
 
+    @OneToOne(mappedBy = "main")
+    private Vejr vejr;
     private Float temp;
     private Float feels_like;
     private Float temp_min;
     private Float temp_max;
     private Integer pressure;
     private Integer humidity;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     private final static long serialVersionUID = -5800791447258722349L;
 
     public Float getTemp() {
@@ -67,12 +69,11 @@ public class Main implements Serializable
         this.humidity = humidity;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    public Vejr getVejr() {
+        return vejr;
     }
 
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public void setVejr(Vejr vejr) {
+        this.vejr = vejr;
     }
-
 }

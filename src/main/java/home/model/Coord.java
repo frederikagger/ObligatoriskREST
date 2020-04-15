@@ -3,16 +3,20 @@ package home.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Coord implements Serializable
+public class Coord extends BaseEntity
 {
 
+    @OneToOne(mappedBy = "coord")
+    private Vejr vejr;
     private Float lon;
     private Float lat;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     private final static long serialVersionUID = 8467535423907993800L;
 
     public Float getLon() {
@@ -31,12 +35,11 @@ public class Coord implements Serializable
         this.lat = lat;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    public Vejr getVejr() {
+        return vejr;
     }
 
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public void setVejr(Vejr vejr) {
+        this.vejr = vejr;
     }
-
 }

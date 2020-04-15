@@ -1,22 +1,24 @@
-
 package home.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Sys implements Serializable
+public class Sys extends BaseEntity
 {
-
+    @OneToOne(mappedBy = "sys")
+    private Vejr vejr;
     private Integer type;
+    @Column(name = "number")
     private Integer id;
     private String country;
     private Integer sunrise;
     private Integer sunset;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     private final static long serialVersionUID = 6501733247107960402L;
 
     public Integer getType() {
@@ -59,12 +61,11 @@ public class Sys implements Serializable
         this.sunset = sunset;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    public Vejr getVejr() {
+        return vejr;
     }
 
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public void setVejr(Vejr vejr) {
+        this.vejr = vejr;
     }
-
 }

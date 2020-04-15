@@ -3,31 +3,33 @@ package home.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.*;
+
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Clouds implements Serializable
+@Table(name = "clouds")
+public class Clouds extends BaseEntity
 {
 
-    private Integer all;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @OneToOne(mappedBy = "clouds")
+    private Vejr vejr;
+    @Column(name = "total")
+    private int all;
     private final static long serialVersionUID = 5551183102126533029L;
 
-    public Integer getAll() {
+    public int getAll() {
         return all;
     }
 
-    public void setAll(Integer all) {
+    public void setAll(int all) {
         this.all = all;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    public Vejr getVejr() {
+        return vejr;
     }
 
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public void setVejr(Vejr vejr) {
+        this.vejr = vejr;
     }
-
 }
