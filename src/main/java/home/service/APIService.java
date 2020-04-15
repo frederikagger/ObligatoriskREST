@@ -1,9 +1,15 @@
 package home.service;
 
 import home.model.Vejr;
+import home.model.Weather;
 import home.repository.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
+
 @Service
 public class APIService {
 
@@ -31,8 +37,12 @@ public class APIService {
     }
 
     public Vejr getVejr(String city) {
-        String url = "http://api.openweathermap.org/data/2.5/weather?appid=22108afc9470c039cef58b60285ebe8a&q="+city+"&units=metric";
-        Vejr vejr = restTemplate.getForObject(url, Vejr.class);
+        String url = "http://api.openweathermap.org/data/2.5/weather?appid=22108afc9470c039cef58b60285ebe8a&q=" + city + "&units=metric";
+        Vejr vejr = new Vejr();
+        try {
+            vejr = restTemplate.getForObject(url, Vejr.class);
+        } catch (HttpClientErrorException e) {
+        }
         vejrRepository.save(vejr);
         cloudsRepository.save(vejr.getClouds());
         coordRepository.save(vejr.getCoord());
@@ -41,5 +51,17 @@ public class APIService {
         weatherRepository.saveAll(vejr.getWeather());
         windRepository.save(vejr.getWind());
         return vejr;
+    }
+
+    public List<Vejr> getAllVejrFromDB() {
+        return (List<Vejr>) vejrRepository.findAll();
+    }
+
+    public Vejr getVejrByID(Long id) {
+        return vejrRepository.findById(id).orElse(null);
+    }
+
+    public Weather getWeatherByID(Long id) {
+        return weatherRepository.findById(id).orElse(null);
     }
 }
