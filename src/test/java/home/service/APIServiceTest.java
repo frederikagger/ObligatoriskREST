@@ -22,6 +22,7 @@ class APIServiceTest {
 
     @Autowired
     APIService apiService;
+    DBService dbService;
 
     @BeforeEach
     void setUp() {
@@ -40,10 +41,10 @@ class APIServiceTest {
 
     @Test
     void getVejrByID(){
-        Vejr vejr = apiService.getVejrByID((long) 1);
+        Vejr vejr = dbService.getVejrByID((long) 1);
         assertNotNull(vejr);
         assertEquals(32, vejr.getClouds().getAll());
-        Weather weather = apiService.getWeatherByID((long) 1);
+        Weather weather = dbService.getWeatherByID((long) 1);
         assertEquals("03d", weather.getIcon());
     }
 }
