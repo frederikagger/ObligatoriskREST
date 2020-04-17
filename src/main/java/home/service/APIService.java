@@ -1,5 +1,6 @@
 package home.service;
 
+import home.exceptions.NotFoundException;
 import home.model.Vejr;
 import home.model.Weather;
 import home.repository.*;
@@ -41,7 +42,8 @@ public class APIService {
         Vejr vejr = new Vejr();
         try {
             vejr = restTemplate.getForObject(url, Vejr.class);
-        } catch (HttpClientErrorException e) {
+        } catch (RuntimeException e) {
+            throw new NotFoundException("The city was not found");
         }
         vejrRepository.save(vejr);
         cloudsRepository.save(vejr.getClouds());
@@ -53,15 +55,4 @@ public class APIService {
         return vejr;
     }
 
-    public List<Vejr> getAllVejrFromDB() {
-        return (List<Vejr>) vejrRepository.findAll();
-    }
-
-    public Vejr getVejrByID(Long id) {
-        return vejrRepository.findById(id).orElse(null);
-    }
-
-    public Weather getWeatherByID(Long id) {
-        return weatherRepository.findById(id).orElse(null);
-    }
 }
