@@ -1,43 +1,48 @@
 body{
-    background-color:#0c0613;
-    text-align:center;
+    background-color:#1d2124;
     color: white;
     margin-left: 100px;
-
+    margin-right: 100px;
+    margin-top: 50px;
+    color: #e66930;
 }
 
+
 .header{
-    padding: 80px;
-    color: white;
+    padding: 60px;
+    color: #e66930;
     font-family: "Comic Sans MS";
-    background-color:darkblue
+    background-color: #30b2e6;
+    text-align: end;
 }
 
 .navbar{
-    height: 100%;
-    width: 100px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
+    margin-left:100px;
+    margin-right: 100px;
+    height: 65px;
+    position:absolute;
+    left:0;
+    right: 0;
+    background-color: #25333e;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+
+
 }
 
 .navbar a{
-    padding: 5px 5px 5px 5px;
-    color: white;
+    padding: 7px 7px 7px 7px;
+    color: #e66930;
+
 }
 
 .navbar a:hover{
     background-color: #ddd;
     color: black;
 }
-.table-striped{
-    width: 40%;
-    background-color: white;
-    margin:auto;
-}
+
 
 .searchBar{
     padding: 50px 30px 30px 30px;
@@ -47,6 +52,17 @@ body{
     width: 20%;
 }
 
-.content{
-    padding: 80px;
+.weather-icon{
+    margin-top: 140px;
+    text-align: center;
+}
+
+.table{
+    padding-top: 175px;
+    padding-bottom: 100px;
+    color: #e66930;
+}
+
+.btn-dark{
+    color: #e66930;
 }
