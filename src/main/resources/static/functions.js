@@ -1,10 +1,3 @@
-function convertUNIXtime(time){
-    let dateObj = new Date(time * 1000);
-    let utcString = dateObj.toUTCString();
-    time = utcString.slice(-11, -4);
-    return time;
-}
-
 function convertUNIXTime(unixTimestamp) {
     let dateObj = new Date((parseInt(unixTimestamp)) * 1000);
 // Get hours from the timestamp
@@ -21,5 +14,18 @@ function setUNIXTime() {
     let times = document.getElementsByClassName("time");
     for (let i=0; i<times.length; i++){
         times[i].innerHTML = convertUNIXTime(times[i].innerHTML)
+    }
+}
+
+function formatDateTime(dateTime) {
+    let formattedTime = dateTime.slice(0, 16); // Removing seconds and miliseconds
+    return formattedTime;
+}
+
+
+function setFormattedDateTime() {
+    let dates = document.getElementsByClassName("dateTime");
+    for (let i=0; i<dates.length; i++){
+        dates[i].innerHTML = formatDateTime(dates[i].innerHTML)
     }
 }
