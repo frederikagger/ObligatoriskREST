@@ -6,9 +6,11 @@
     <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{http://localhost:8181/styles.css}">
+    <script th:src="@{http://localhost:8181/functions.js}"></script>
+
 
 </head>
-<body>
+<body onload="setFormattedDateTime()">
 
 <!-- Header -->
 <div class="header">
@@ -27,14 +29,20 @@
     <div class="table">
         <table class="table table-striped">
             <thead>
+            <th scope="col"> Time and date</th>
+            <th> City</th>
+            <th></th>
+            </thead>
+            <tbody>
             <tr th:each="vejr :${altvejr}">
-                <td th:text="${vejr?.datetimeCreated}"></td>
+                <td class="dateTime" th:text="${vejr?.datetimeCreated}"></td>
                 <td th:text="${vejr?.name}"></td>
                 <td>
-                    <a th:href="@{'/historicalData/' + ${vejr?.ID}}" type="button" class="btn btn-dark"> See details </a>
+                    <a th:href="@{'/historicalData/' + ${vejr?.ID}}" type="button" class="btn btn-dark"> See
+                        details </a>
                 </td>
             </tr>
-            </thead>
+            </tbody>
         </table>
     </div>
 </div>

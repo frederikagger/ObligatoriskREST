@@ -29,43 +29,44 @@
     <a th:href="@{/historicalData}">Historical data</a>
 </div>
 
-<!-- Content  -->
-<div class="content">
-    <h3>Weather in <span th:text="${vejr?.name} +', '+${vejr?.sys?.country} + ' at '+${vejr?.datetimeCreated}"> By, Land </span></h3>
-    <img alt="weather icon" th:src="@{'http://openweathermap.org/img/wn/' + ${weather?.icon}}+'@2x.png'">
+<!-- Weather-icon  -->
+<div class="weather-icon">
+    <h3>Weather in <span
+            th:text="${vejr?.name} +', '+${vejr?.sys?.country} + ' at '+${vejr?.datetimeCreated}"> By, Land </span></h3>
+    <img alt="weather icon" th:src="@{'http://openweathermap.org/img/wn/' + ${vejr?.weather[0].icon}}+'@2x.png'">
     <h3><span th:text="${vejr?.main?.temp}"> Temperature </span> °C </h3>
+</div>
 
-    <!-- Table -->
-    <div class="table">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <td scope="col">Wind</td>
-                <td><span th:text="${vejr?.wind?.speed}"> </span> m/s</td>
-            </tr>
-            <tr>
-                <td scope="col">Cloudiness</td>
-                <td><span th:text="${weather?.description}"> </span></td>
-            </tr>
-            <tr>
-                <td scope="col">Pressure</td>
-                <td><span th:text="${vejr?.main?.pressure}"> </span> hPa</td>
-            </tr>
-            <tr>
-                <td scope="col">Humidity</td>
-                <td><span th:text="${vejr?.main?.humidity}"> </span> %</td>
-            </tr>
-            <tr>
-                <td scope="col">Sunrise</td>
-                <td><span th:text="${vejr?.sys?.sunrise}+${vejr?.timezone}" class="time"> </span></td>
-            </tr>
-            <tr>
-                <td scope="col">Sunset</td>
-                <td><span th:text="${vejr?.sys?.sunset}+${vejr?.timezone}" class="time"> </span></td>
-            </tr>
-            </thead>
-        </table>
-    </div>
+<!-- Table -->
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td scope="col">Wind</td>
+            <td><span th:text="${vejr?.wind?.speed}"> </span> m/s</td>
+        </tr>
+        <tr>
+            <td scope="col">Cloudiness</td>
+            <td><span th:text="${weather?.description}"> </span></td>
+        </tr>
+        <tr>
+            <td scope="col">Pressure</td>
+            <td><span th:text="${vejr?.main?.pressure}"> </span> hPa</td>
+        </tr>
+        <tr>
+            <td scope="col">Humidity</td>
+            <td><span th:text="${vejr?.main?.humidity}"> </span> %</td>
+        </tr>
+        <tr>
+            <td scope="col">Sunrise</td>
+            <td><span th:text="${vejr?.sys?.sunrise}+${vejr?.timezone}" class="time"> </span></td>
+        </tr>
+        <tr>
+            <td scope="col">Sunset</td>
+            <td><span th:text="${vejr?.sys?.sunset}+${vejr?.timezone}" class="time"> </span></td>
+        </tr>
+        </thead>
+    </table>
 </div>
 </body>
 </html>
